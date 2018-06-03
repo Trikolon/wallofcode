@@ -1,7 +1,7 @@
 <template>
-    <pre><code v-show="!loading" ref="code" class="language-javascript">
+    <code v-show="!loading" id="codebox" ref="code" class="language-javascript">
         {{codeText}}
-    </code></pre>
+    </code>
 </template>
 
 <script>

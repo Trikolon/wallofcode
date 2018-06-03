@@ -52,7 +52,7 @@ export default {
 
 <style>
   body {
-    /*background-color: black;*/
+    background-color: #2d2d2d; /* FIXME: This should happen in CodeContainer */
   }
 #app {
 }
