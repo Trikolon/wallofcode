@@ -45,7 +45,7 @@ export default {
     },
   },
   mounted() {
-    this.fetchCode('http://localhost:8080/code/jquery.js');
+    this.fetchCode('/code/jquery.js');
   },
 };
 </script>
