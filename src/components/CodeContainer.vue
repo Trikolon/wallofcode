@@ -24,6 +24,13 @@ export default {
       loading: true,
     };
   },
+  computed: {
+    // codeTextSection() {
+    // TODO
+    // Depending on screen width and height:
+    // Choose random part of code string to fill up screen
+    // },
+  },
   watcher: {
     codeText() {
       logger.debug('codeText changed');
@@ -49,6 +56,6 @@ export default {
 code {
     text-align: justify;
     word-break: break-all;
-    line-height: 0.5;
+    line-height: 0;
 }
 </style>

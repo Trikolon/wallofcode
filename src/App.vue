@@ -20,9 +20,17 @@ export default {
     return {
       codeText: null,
       loading: false,
+      codePaths: [
+        '/code/jquery.js',
+        '/code/vue.js',
+        '/code/react.js',
+      ],
     };
   },
   methods: {
+    getRandomInt(min, max) {
+      return Math.floor(Math.random() * ((max - min) + 1)) + min;
+    },
     fetchCode(url) {
       this.loading = true;
       fetch(url)
@@ -45,7 +53,8 @@ export default {
     },
   },
   mounted() {
-    this.fetchCode('/code/jquery.js');
+    const codePath = this.codePaths[this.getRandomInt(0, this.codePaths.length - 1)];
+    this.fetchCode(codePath);
   },
 };
 </script>
@@ -55,6 +64,7 @@ export default {
     margin: 0;
     padding: 0;
     background-color: #2d2d2d; /* FIXME: This should happen in CodeContainer */
+    overflow-y: hidden;
   }
 #app {
 }
