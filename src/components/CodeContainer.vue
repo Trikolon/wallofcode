@@ -49,5 +49,6 @@ export default {
 code {
     text-align: justify;
     word-break: break-all;
+    line-height: 0.5;
 }
 </style>
