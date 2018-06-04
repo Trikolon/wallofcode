@@ -46,5 +46,8 @@ export default {
 </script>
 
 <style scoped>
-
+code {
+    text-align: justify;
+    word-break: break-all;
+}
 </style>

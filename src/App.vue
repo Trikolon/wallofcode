@@ -52,6 +52,8 @@ export default {
 
 <style>
   body {
+    margin: 0;
+    padding: 0;
     background-color: #2d2d2d; /* FIXME: This should happen in CodeContainer */
   }
 #app {
