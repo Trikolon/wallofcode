@@ -44,7 +44,6 @@ export default {
     // Lazy load import (will do network fetch)
     import(`raw-loader!@/assets/code/${fileName}`)
       .then((code) => {
-        console.debug('Loaded code', code);
         this.codeText = code.default;
         this.loading = false;
       })

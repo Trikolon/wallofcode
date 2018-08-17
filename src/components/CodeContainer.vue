@@ -61,7 +61,7 @@ export default {
     },
     calculateCodeDimensions() {
       // Store width and height of code box
-      this.height = this.$refs.code.clientHeight; //FIXME: is 0
+      this.height = this.$refs.code.clientHeight; // FIXME: is 0
       this.width = this.$refs.code.clientWidth; // FIXME: is 0
       logger.debug('codebox dimensions changed', this.height, this.width);
     },
