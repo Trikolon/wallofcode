@@ -1,7 +1,11 @@
 <template>
   <div id="app">
+    <div style="display: flex; justify-content: center; align-items: center; color: white" >
     <h3 v-show="loading">Loading ....</h3>
-    <h3 v-show="!loading && codeText == null">Error while fetching data</h3>
+    <h3 v-show="!loading && codeText == null">
+      An error occured while loading the page content. Check the console for details.
+    </h3>
+    </div>
     <CodeContainer v-if="codeText" :code-text="codeText"></CodeContainer>
   </div>
 </template>
@@ -20,10 +24,10 @@ export default {
     return {
       codeText: null,
       loading: false,
-      codePaths: [
-        '/code/jquery.js',
-        '/code/vue.js',
-        '/code/react.js',
+      codeFiles: [
+        'jquery.txt',
+        'vue.txt',
+        'react.txt',
       ],
     };
   },
@@ -31,30 +35,23 @@ export default {
     getRandomInt(min, max) {
       return Math.floor(Math.random() * ((max - min) + 1)) + min;
     },
-    fetchCode(url) {
-      this.loading = true;
-      fetch(url)
-        .then((response) => {
-          if (!response.ok) {
-            logger.warn('Response code != 2xx from server', response);
-            return Promise.reject(response);
-          }
-          return response.text();
-        })
-        .then((codeText) => {
-          this.codeText = codeText;
-          this.loading = false;
-          logger.debug('Fetched code string from server');
-        })
-        .catch((error) => {
-          this.loading = false;
-          logger.error('Error while fetching code string from server', error);
-        });
-    },
   },
   mounted() {
-    const codePath = this.codePaths[this.getRandomInt(0, this.codePaths.length - 1)];
-    this.fetchCode(codePath);
+    // Pick a random file to load from array of file names
+    const fileName = this.codeFiles[this.getRandomInt(0, this.codeFiles.length - 1)];
+    this.loading = true;
+
+    // Lazy load import (will do network fetch)
+    import(`raw-loader!@/assets/code/${fileName}`)
+      .then((code) => {
+        console.debug('Loaded code', code);
+        this.codeText = code.default;
+        this.loading = false;
+      })
+      .catch((error) => {
+        logger.error('Error while fetching code string from server', error);
+        this.loading = false;
+      });
   },
 };
 </script>
