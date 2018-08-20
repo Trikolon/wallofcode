@@ -1,10 +1,11 @@
 <template>
   <div id="app">
-    <div style="display: flex; justify-content: center; align-items: center; color: white" >
-    <h3 v-show="loading">Loading ....</h3>
-    <h3 v-show="!loading && codeText == null">
-      An error occured while loading the page content. Check the console for details.
-    </h3>
+    <div
+         style="display: flex; justify-content: center; align-items: center; color: white" >
+      <h3 v-show="loading">Loading ....</h3>
+      <h3 v-show="failed">
+        An error occured while loading the page content. Check the console for details.
+      </h3>
     </div>
     <CodeContainer v-if="codeText" :code-text="codeText"></CodeContainer>
   </div>
@@ -34,6 +35,11 @@ export default {
   methods: {
     getRandomInt(min, max) {
       return Math.floor(Math.random() * ((max - min) + 1)) + min;
+    },
+  },
+  computed: {
+    failed() {
+      return this.loading === false && this.codeText == null;
     },
   },
   mounted() {
