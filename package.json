@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "prismjs": "^1.15.0",
-    "vue": "^2.5.17"
+    "vue": "^2.5.21"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.4",
@@ -17,7 +17,7 @@
     "@vue/cli-service": "^3.0.4",
     "@vue/eslint-config-airbnb": "^3.0.4",
     "raw-loader": "^0.5.1",
-    "vue-template-compiler": "^2.5.17"
+    "vue-template-compiler": "^2.5.21"
   },
   "browserslist": [
     "> 1%",
